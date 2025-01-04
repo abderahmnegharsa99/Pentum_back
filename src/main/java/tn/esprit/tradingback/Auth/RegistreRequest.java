@@ -22,4 +22,8 @@ public class RegistreRequest {
     Float contact;
     String mail;
     String motDePasse;
+
+    // Champs ajoutés pour le compte bancaire
+    Long numCompte;  // Numéro du compte bancaire
+    String nomBanque;
 }

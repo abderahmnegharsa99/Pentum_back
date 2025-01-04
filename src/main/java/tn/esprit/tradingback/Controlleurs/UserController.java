@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.tradingback.Entities.Portfeuille;
 import tn.esprit.tradingback.Entities.User;
 import tn.esprit.tradingback.Services.UserService;
+import tn.esprit.tradingback.dto.UserDTO;
 
 import java.util.Optional;
 
@@ -29,6 +30,17 @@ public class UserController {
         User updatedUser = userService.assignPortefeuilleToUser(idU, portfeuille);
 
         // Return the updated user as the response
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    // New API to update user profile fields
+    @PutMapping("/update-by-email")
+    public ResponseEntity<User> updateUserByEmail(
+            @RequestParam String email,
+            @RequestBody UserDTO userUpdateDTO) {
+
+        User updatedUser = userService.updateUserByEmail(email, userUpdateDTO);
+
         return ResponseEntity.ok(updatedUser);
     }
 

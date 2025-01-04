@@ -18,7 +18,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="usert")
+@Table(name = "usert")
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements UserDetails {
@@ -27,6 +27,14 @@ public class User implements UserDetails {
     Long idU;
     String nom;
     String prenom;
+
+    String phone;
+    String location;
+    String description;
+    String age;
+    String profession;
+
+
     Long numCin;
     Date dateDeNaissance;
     String paysDeNaissance;
@@ -40,14 +48,12 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     ROLE role;
 
-    @OneToOne(mappedBy="user", cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL/*, orphanRemoval = true*/)
     private Portfeuille portfeuille;
 
 
     @OneToOne
     Compte compteBancaire;
-
-
 
 
     @Override
@@ -87,12 +93,11 @@ public class User implements UserDetails {
     }
 
 
-
     //   Compte + portfolio Abdou
-   // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-   // private Portfeuille portfeuille;
+    // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // private Portfeuille portfeuille;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="utilisateurC")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateurC")
     private Set<Compte> comptes;
 
 

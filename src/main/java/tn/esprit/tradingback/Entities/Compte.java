@@ -1,25 +1,28 @@
 package tn.esprit.tradingback.Entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
-@Table(name = "COMPTE")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 
-public  abstract class Compte  {
+
+//@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+//@Table(name = "COMPTE")
+
+
+
+public class Compte implements Serializable {
     @Id
     @Column(name ="numCompte")
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -28,6 +31,7 @@ public  abstract class Compte  {
     private String pays;
     private String rib;
     private String iban;
+    private String nomBanque;
     @Temporal (TemporalType.DATE)
     private Date dateOuverture;
     private boolean state;
@@ -38,5 +42,4 @@ public  abstract class Compte  {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "comptesTransaction")
     private Set<Transaction> Transactions ;
-
 }
