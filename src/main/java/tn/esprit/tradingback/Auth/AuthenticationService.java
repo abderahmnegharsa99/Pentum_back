@@ -17,7 +17,7 @@ import tn.esprit.tradingback.Entities.Portfeuille;
 import tn.esprit.tradingback.Entities.User;
 import tn.esprit.tradingback.Repositories.CompteRepository;
 import tn.esprit.tradingback.Repositories.PasswordResetTokenRepository;
-import tn.esprit.tradingback.Repositories.PortefeuilleRepository;
+//import tn.esprit.tradingback.Repositories.PortefeuilleRepository;
 import tn.esprit.tradingback.Repositories.UserRepository;
 import tn.esprit.tradingback.Services.JwtService;
 
@@ -35,7 +35,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final PasswordResetTokenRepository tokenRepository;
     private final JavaMailSender mailSender;
-    private final PortefeuilleRepository portefeuilleRepository; // Inject PortefeuilleRepository
+//    private final PortefeuilleRepository portefeuilleRepository; // Inject PortefeuilleRepository
     private final CompteRepository compteRepository;
 
     @Transactional

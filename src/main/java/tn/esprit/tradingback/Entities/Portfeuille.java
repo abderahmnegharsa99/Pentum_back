@@ -27,10 +27,9 @@ public class Portfeuille implements Serializable {
     private Float  solde;
     //@JsonIgnore
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "idU")
     private User user;
-
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "portfeuille", orphanRemoval = true)
     @JsonManagedReference

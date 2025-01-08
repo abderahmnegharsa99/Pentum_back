@@ -1,27 +1,73 @@
-//package tn.esprit.tradingback.Services;
-//
-//import org.json.JSONObject;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.stereotype.Service;
-//import tn.esprit.tradingback.Entities.Post;
-//import tn.esprit.tradingback.Repositories.PostRepository;
-//import tn.esprit.tradingback.Services.Interfaces.IPostService;
-//
-//import java.text.DecimalFormat;
-//import java.util.List;
-//
-//@Service
-//public class PostService implements IPostService {
-//
-//     public final PostRepository postRepository;
-//    @Autowired
-//    BadWordService badWordService;
-//
-//    public PostService(PostRepository postRepository) {
-//        this.postRepository = postRepository;
-//    }
-//
+package tn.esprit.tradingback.Services;
+
+import lombok.AllArgsConstructor;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import tn.esprit.tradingback.Entities.Post;
+import tn.esprit.tradingback.Repositories.PostRepository;
+import tn.esprit.tradingback.Services.Interfaces.IPostService;
+
+import java.text.DecimalFormat;
+import java.util.List;
+
+@Service
+public class PostService implements IPostService {
+
+    public final PostRepository postRepository;
+    @Autowired
+    BadWordService badWordService;
+
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+
+    @Override
+    public ResponseEntity<?> addPost(Post post) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<?> updatePost(Post post) {
+        return null;
+    }
+
+    @Override
+    public void favoritePost(Long postId, Long userId) {
+
+    }
+
+    @Override
+    public Post findPostById(Long id) {
+        return null;
+    }
+
+    @Override
+    public void deletePost(Long id) {
+
+    }
+
+    @Override
+    public List<Post> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public String calculatePercentagePerTitle(String title) {
+        return "";
+    }
+
+    @Override
+    public void likePost(Long postId) {
+
+    }
+
+    @Override
+    public void dislikePost(Long postId) {
+
+    }
+}
 //    @Override
 //    public ResponseEntity<?> addPost(Post post) {
 //        ResponseEntity<String> con = badWordService.filterBadWords(post.getContent());
@@ -39,7 +85,7 @@
 //
 //    @Override
 //    public ResponseEntity<?> updatePost(Post post) {
-//        Post post1=postRepository.findById(post.getId()).orElse(null);
+//        Post post1 = postRepository.findById(post.getId()).orElse(null);
 //        ResponseEntity<String> con = badWordService.filterBadWords(post.getContent());
 //        String responseBody = con.getBody();
 //        JSONObject jsonObject = new JSONObject(responseBody);
@@ -75,7 +121,6 @@
 //    }
 //
 //
-//
 //    @Override
 //    public Post findPostById(Long id) {
 //        return postRepository.findById(id).orElse(null);
@@ -94,13 +139,13 @@
 //    @Override
 //    public String calculatePercentagePerTitle(String title) {
 //        Long totalposts = postRepository.countPosts();
-//        if(totalposts==0){
-//            return"0.00%";
+//        if (totalposts == 0) {
+//            return "0.00%";
 //        }
 //        Long postsbytitle = postRepository.countPostsByTitle(title);
-//        double percentage = (double) postsbytitle/totalposts *100.0;
+//        double percentage = (double) postsbytitle / totalposts * 100.0;
 //        DecimalFormat df = new DecimalFormat("0.00%");
-//        return df.format(percentage/100.0);
+//        return df.format(percentage / 100.0);
 //    }
 //
 //
@@ -129,4 +174,3 @@
 //        postRepository.save(post);
 //
 //    }
-//}
